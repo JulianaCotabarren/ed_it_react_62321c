@@ -1,12 +1,13 @@
 import './App.css';
 import ProductsContainer from './components/ProductsContainer';
 import EcommerceProvider from './context/EcommerceProvider';
+import Rutas from './routes'
 
 function App() {
   return (
     <div className="App">
       <EcommerceProvider>
-        <ProductsContainer/>
+        <Rutas/>
       </EcommerceProvider>
     </div>
   );

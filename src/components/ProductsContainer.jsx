@@ -1,13 +1,19 @@
-import {useContext} from 'react'
-import { EcommerceContext } from '../context/EcommerceProvider'
-import Tarjeta from './Tarjeta'
+import { useContext } from "react";
+import { EcommerceContext } from "../context/EcommerceProvider";
+import Tarjeta from "./Tarjeta";
 
 const ProductsContainer = () => {
-  const {productos} = useContext(EcommerceContext)
+  const { productos } = useContext(EcommerceContext);
 
   return (
-    <div className='container-fluid d-flex p-3'>
-      {productos.map(({id,imagen,nombre,version,precio,year}) => (
+    <div className="container-fluid d-flex p-3">
+      {productos.map((producto) => (
+        <Tarjeta 
+          key={producto.id} 
+          {...producto} 
+        />
+      ))}
+      {/* {productos.map(({id,imagen,nombre,version,precio,year,sinBoton}) => (
         <Tarjeta
           key={id}
           imagen={imagen}
@@ -16,18 +22,10 @@ const ProductsContainer = () => {
           version={version}
           precio={precio}
           year={year}
-        />
-        /* Un modo más reducido sería:
-        {productos.map((producto) => (
-          <Tarjeta
-            key={producto.id}
-            {...producto}
-          />
-        ))}
-        */
-      ))}
+          sinBoton={true}
+        /> */}
     </div>
-  )
-}
+  );
+};
 
-export default ProductsContainer
+export default ProductsContainer;

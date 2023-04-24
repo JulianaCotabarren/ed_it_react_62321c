@@ -33,9 +33,13 @@ const EcommerceProvider = ({children}) => {
         }
     ]
 
+    const agregarAlCarrito = (producto) => setCarrito([...carrito,producto])
+
   return (
     <EcommerceContext.Provider value={{
-        productos
+        productos,
+        agregarAlCarrito,
+        carrito
     }}>
         {children}
     </EcommerceContext.Provider>
