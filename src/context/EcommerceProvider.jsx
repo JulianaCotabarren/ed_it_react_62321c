@@ -1,10 +1,11 @@
-import {createContext, useState} from 'react'
+import {createContext} from 'react'
+import useCarrito from '../hooks/useCarrito'
 
 export const EcommerceContext = createContext('')
 
 const EcommerceProvider = ({children}) => {
-
-    const [carrito,setCarrito] = useState([])
+    
+    const {carrito,agregarAlCarrito,eliminarDelCarrito,estaEnElCarrito} = useCarrito()
 
     const productos = [
         {
@@ -33,13 +34,15 @@ const EcommerceProvider = ({children}) => {
         }
     ]
 
-    const agregarAlCarrito = (producto) => setCarrito([...carrito,producto])
+    //const quitarDelCarrito = (producto) => setCarrito(carrito.pop(producto))
 
   return (
     <EcommerceContext.Provider value={{
         productos,
         agregarAlCarrito,
-        carrito
+        carrito,
+        eliminarDelCarrito,
+        estaEnElCarrito
     }}>
         {children}
     </EcommerceContext.Provider>
