@@ -1,43 +1,28 @@
-import {createContext, useState} from 'react'
+import React, { createContext } from 'react'
+import useLayout from '../hooks/useLayout'
+import useProducts from '../hooks/useProducts'
+import useFavourites from '../hooks/useFavourites'
 
 export const EcommerceContext = createContext('')
 
 const EcommerceProvider = ({children}) => {
+  const {loading} = useLayout()
+  const {products,getAllProducts,saveProduct} = useProducts()
+  const {favourites,getAllFavourites,isInFavourites,addToFavourites,removeFavourite} = useFavourites()
 
-    const [carrito,setCarrito] = useState([])
-
-    const productos = [
-        {
-            id: "1",
-            imagen: 'https://http2.mlstatic.com/D_NQ_NP_605126-MLM51559383638_092022-O.webp',
-            nombre: 'Iphone',
-            version: '14 Pro Max',
-            precio: 400000,
-            year: 2023
-        },
-        {
-            id: "2",
-            imagen: 'https://http2.mlstatic.com/D_NQ_NP_803693-MLA47776072534_102021-O.webp',
-            nombre: 'Iphone',
-            version: '13 Pro Max',
-            precio: 300000,
-            year: 2022
-        },
-        {
-            id: "3",
-            imagen: 'https://http2.mlstatic.com/D_NQ_NP_624409-MLA54545219880_032023-O.webp',
-            nombre: 'Samsung',
-            version: 'a50',
-            precio: 160000,
-            year: 2019
-        }
-    ]
-
-  return (
+  return(
     <EcommerceContext.Provider value={{
-        productos
+      loading,
+      products,
+      favourites,
+      getAllProducts,
+      saveProduct,
+      getAllFavourites,
+      isInFavourites,
+      addToFavourites,
+      removeFavourite
     }}>
-        {children}
+      {children}
     </EcommerceContext.Provider>
   )
 }

@@ -1,14 +1,13 @@
 import './App.css';
-import ProductsContainer from './components/ProductsContainer';
 import EcommerceProvider from './context/EcommerceProvider';
+import Routes from './routes';
+
 
 function App() {
   return (
-    <div className="App">
-      <EcommerceProvider>
-        <ProductsContainer/>
-      </EcommerceProvider>
-    </div>
+    <EcommerceProvider>
+      <Routes/>
+    </EcommerceProvider>
   );
 }
 

@@ -1,0 +1,48 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "sneaker",
+      "brand": "nike",
+      "model": "killshot 2",
+      "price": 87.54
+    },
+    {
+      "id": 2,
+      "name": "sneaker",
+      "brand": "adidas",
+      "model": "grand court",
+      "price": 69.99
+    },
+    {
+      "id": 3,
+      "name": "sneaker",
+      "brand": "puma",
+      "model": "super liga",
+      "price": 54.97
+    },
+    {
+      "id": 4,
+      "name": "sneaker",
+      "brand": "reebok",
+      "model": "harman",
+      "price": 39.99
+    },
+    {
+      "name": "shoes",
+      "brand": "nike",
+      "model": "f30",
+      "price": "32",
+      "id": 5
+    }
+  ],
+  "favourites": [
+    {
+      "id": 1,
+      "name": "sneaker",
+      "brand": "nike",
+      "model": "killshot 2",
+      "price": 87.54
+    }
+  ]
+}
