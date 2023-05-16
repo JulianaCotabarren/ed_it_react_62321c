@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const Input = (props) => {
-  const {name,type='text',value,onChange,required} = props
+  const { name, type = "text", value, onChange, required, disabled } = props;
 
   return (
     <div className="mb-3">
@@ -9,13 +9,14 @@ const Input = (props) => {
       <input
         type={type}
         name={name}
+        disabled={disabled}
         value={value}
-        onChange={onChange}
         required={required}
+        onChange={onChange}
         className="form-control"
       />
     </div>
-  )
-}
+  );
+};
 
-export default Input
+export default Input;

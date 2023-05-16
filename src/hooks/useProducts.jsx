@@ -5,6 +5,8 @@ import useLayout from './useLayout'
 const useProducts = () => {
     const {showLoading,hideLoading} = useLayout()
     const [products,setProducts] = useState([])
+    const [edit,setEdit] = useState(false)
+    const [editProductFields,setEditProductFields] = useState(null)
 
     const getAllProducts = async () => {
         showLoading()
@@ -17,7 +19,6 @@ const useProducts = () => {
             hideLoading()
         }
     }
-
     const saveProduct = async (object) => {
       showLoading()
       try {
@@ -28,17 +29,42 @@ const useProducts = () => {
           console.log(error);
           hideLoading()
       }
-  }
+    }
+    const editProduct = async (object) => {
+      showLoading()
+      try {
+          await axiosClient.put(`/products/${object?.id}`,object)
+          await getAllProducts()
+          alert('The product has been edited')
+          handleResetEditProductFields()
+          hideLoading()
+      } catch (error) {
+          console.log(error);
+          hideLoading()
+      }
+    }
 
+    const handleEditProductFields = (object) => {
+      setEdit(true)
+      setEditProductFields(object)
+    }
+    const handleResetEditProductFields = () => {
+      setEdit(false)
+      setEditProductFields(null)
+    }
     useEffect(() => {
       getAllProducts()
     }, [])
     
-
   return {
     products,
+    edit,
+    editProductFields,
     getAllProducts,
-    saveProduct
+    saveProduct,
+    handleEditProductFields,
+    handleResetEditProductFields,
+    editProduct
   }
 }
 
